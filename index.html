@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js" crossorigin="anonymous"></script>
+  <script src="./move.js"></script>
+
+</head>
+
+<body>
+
+  <a-scene background="color:lightblue" id="scene" inspector-plugin-recast>
+
+    <a-assets>
+      <a-asset-item 
+        id="terrainMap" 
+        src="./assets/low_poly_city/scene.gltf">
+      </a-asset-item>
+
+      <a-asset-item 
+        id="wheel" 
+        src="./assets/steering_wheel/scene.gltf">
+      </a-asset-item>
+    </a-assets>
+
+    <a-entity 
+    movement-controls="speed: 0.5; constrainToNavMesh: true"
+    position="0 1 5"
+    id="camera-rig"
+    move>
+
+    <a-entity 
+    camera 
+    position="0 0 5" 
+    rotation="0 0 0" 
+    look-controls="pointerLockEnabled: false">    
+
+      <a-plane
+      src="./assets/acc.png"
+      position="-0.5 -0.5 -1"
+      scale="0.2 0.2 0.2"
+      rotation="0 0 0"
+      color="cyan"
+      id="control-acce">
+      </a-plane>
+
+      <a-plane
+      src="./assets/break.png"
+      position="-1 -0.5 -1"
+      scale="0.2 0.2 0.2"
+      rotation="0 0 0"
+      id="control-break">
+      </a-plane>
+      
+      <a-entity
+      id="wheel"
+      gltf-model="#wheel"
+      position="0.5 -0.5 -1"
+      scale="0.01 0.01 0.01"
+      rotation="0 0 0">
+      </a-entity>
+    </a-entity>
+    </a-entity>
+
+    <a-entity
+    id="city"
+    gltf-model="#terrainMap"
+    position="10 -2 -140"
+    scale="1 1 1"
+    rotation="0 90 0"
+    >
+    </a-entity>
+
+    <a-box 
+    id="b1" 
+    material="height: 400; metalness: 0.34" 
+    color="red" 
+    geometry="depth: 400; height: 45; width: 5" 
+    position="-76.79446 -8.30764 -164.16795">
+    </a-box>
+
+    <a-box 
+    id="b2" 
+    material="height: 400; metalness: 0.34" 
+    #color="red" 
+    geometry="depth: 400; height: 45; width: 5" 
+    position="75.38341 -8.30764 -164.16795"> 
+    </a-box>
+
+    <a-box 
+    id="b3" 
+    material="height: 400; metalness: 0.34" 
+    color="red" 
+    geometry="depth: 5; height: 45; width: 200" 
+    position="-0.33183 -7.8421 -359.48732">
+    </a-box>
+
+    <a-box 
+    id="b4" 
+    material="height: 400; metalness: 0.34" 
+    color="red" 
+    geometry="depth: 5; height: 45; width: 200" 
+    position="-0.33183 -7.8421 31.16964">
+    </a-box>
+
+  </a-scene>
+</body>
+</html>
